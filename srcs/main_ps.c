@@ -36,10 +36,8 @@ int main (int ac, char *av[])
     stack_a = NULL;
     stack_b = NULL;
     if (ac == 1 || (ac == 2 && !av[1][0]))
-    {
-        return (1);
-    }    
-	if (ac == 2)
+        return (1); 
+	else if (ac == 2)
     {
         av = ft_split(av[1], ' '); 
         if (g_check(&stack_a, av)) // problem de free avec substr
@@ -49,34 +47,26 @@ int main (int ac, char *av[])
             }
     } 
     else
-        g_check(&stack_a, av + 1); 
-
+    {
+        if (g_check(&stack_a, av + 1))
+            return (0);
+    }
     if (!sorted(stack_a))
     { 
-     ft_printf("not sorted\n");   
+     ft_printf("not sorted\n");   //-> to delete later
         if (stack_len(stack_a) == 2)
             sa(&stack_a/*, false*/);
         else if (stack_len(stack_a) == 3)
-        {
-            ft_printf("_________________________________________\n");
-            ft_printf("Instruction(s):\n");
-            ft_printf("----------------------------------------\n");
             sorting_three(&stack_a);
-        }
         else if (stack_len(stack_a) > 3)
-        {
-            ft_printf("_________________________________________\n");
-            ft_printf("Instruction(s):\n");
-            ft_printf("----------------------------------------\n");
-            // void greater(t_stack **stack_a, t_stack **stack_b);
-        }
-            
+            sort_stack(&stack_a, &stack_b);
     }
-    display(&stack_a, &stack_b);
+    display(&stack_a); //-> to delete later
     if (ac == 2)
         free_result(av);
     free_stack(&stack_a);
     return (0);
 }
+
 
 //&stack_a to go to the memory address of the structure, av+1 is to skip the ./push_swap argument, boolan if it has two argements or not

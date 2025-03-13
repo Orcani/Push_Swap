@@ -72,8 +72,7 @@ void create_stack(t_stack **stack, int nb)
 	if (!top)
 		return;
 	top->value = nb;
-	top->current = 0;
-    top->final_i = 0;
+    top->index= 0;
     top->target_node = NULL;	
 	top->next = NULL;
 	
@@ -96,7 +95,7 @@ t_stack	*ft_lstlast_ps(t_stack *lst)
 		lst = lst->next;
 	return (lst);
 }
-void printflist(t_stack *list)
+void printflist(t_stack *list) //-> to delete later
 {
     t_stack *temp;
     temp = list;
@@ -115,7 +114,7 @@ int g_check(t_stack **stack_a, char **av /*, int flag_ac_2(int ac)*/)
 
 	i = 0;
 	while(av[i])
-	{
+    {
 		if (check_synthax(av[i]))
 			return(error_check(*stack_a), 1);
 		nb = ft_atol(av[i]);
@@ -126,10 +125,8 @@ int g_check(t_stack **stack_a, char **av /*, int flag_ac_2(int ac)*/)
 		create_stack(stack_a, (int)nb);
 		i++;
 	}
-	ft_printf("Input:\n");
-	printflist(*stack_a);
-	// if (flag_ac_2)
-	// 	free_result
+	ft_printf("Input:\n");//-> to delete later
+	printflist(*stack_a); //-> to delete later
     return (0);
 }
 

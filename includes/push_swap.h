@@ -15,6 +15,7 @@
 
 # include <fcntl.h>
 # include <stdarg.h>
+# include <stdbool.h>
 # include <stddef.h>
 # include <stdint.h>
 # include <stdio.h>
@@ -26,22 +27,31 @@
 # include "../ft_printf/includes/ft_printf.h"
 
 
-// typedef struct s_node
+// typedef struct s_stack
 // {
-//     long num;
-// 	//int head;            // The number to be stored in this node
-//     struct s_node *next;  // Pointer to the next node in the list (or NULL if it’s the last node)
-// } t_node;
+//     int value;
+// 	int index;
+//     int push_cost;
+
+// 	bool above_median;
+// 	bool cheapest;
+
+// 	struct s_stack *next;
+// 	struct s_stack *target_node;
+// } t_stack;
 
 typedef struct s_stack
 {
     int value;
-	int current;
-	int final_i;
-	int above_median;
-	int push_cost;
-	int cheapest;
+    int current_position;
+	int final_index;
+    int push_cost;
+
+	bool above_median;
+	bool cheapest;
+
 	struct s_stack *next;
+    struct s_stack *prev;
 	struct s_stack *target_node;
 } t_stack;
 // handle one argument ./push_swap "1 8 -42 1337"
@@ -84,13 +94,13 @@ int sorted(t_stack *stack);
 t_stack *max(t_stack *stack_a);
 t_stack *min(t_stack *stack_a);
 void sorting_three(t_stack **stack_a);
-void push_swap(t_stack **stack_a,  t_stack **stack_b);
+void sort_stack(t_stack **stack_a, t_stack **stack_b);
 
 
 // display to help me visualize
 void printf_stack_a(t_stack **stack_a);
 void printf_stack_b(t_stack **stack_b);
 void printflist(t_stack *list);
-void display( t_stack **stack_a, t_stack **stack_b);
+void display( t_stack **stack_a);
 
 #endif

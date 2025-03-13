@@ -12,21 +12,59 @@
 
 #include "push_swap.h"
 
-
 int sorted(t_stack *stack)
 {
-    if (!stack || !stack->next) 
-        return (1);
-    
+    if (!stack) 
+        return (1); // Empty stack is considered sorted
+
     while (stack->next)
     {
-        if (stack->value > stack->next->value)  
-            return (0);
+        if (stack->value > stack->next->value)
+            return (0); // Found an unsorted pair
         stack = stack->next;
     }
-    return (1);  
+    return (1); // Stack is sorted
 }
 
+t_stack *min(t_stack *stack)
+{
+	long min;
+	t_stack *min_node;
+
+	if (!stack)
+		return (NULL);
+	min = LONG_MAX;
+	while(stack)
+	{
+		if(stack->value < min)
+		{
+			min = stack->value;
+			min_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (min_node);
+}
+
+t_stack *max(t_stack *stack)
+{
+	long max;
+	t_stack *max_node;
+
+	if (!stack)
+		return (NULL);
+	max = LONG_MIN;
+	while(stack)
+	{
+		if(stack->value > max)
+		{
+			max = stack->value;
+			max_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (max_node);
+}
 
 void sorting_three(t_stack **stack_a)
 {
@@ -40,59 +78,70 @@ else if ((*stack_a)->next == biggest_node)
 if ((*stack_a)->value > (*stack_a)->next->value)
 	sa(stack_a);
 }
-t_stack *max(t_stack *stack_a)
-{
-	long max;
-	t_stack *max_node;
 
-	if (!stack_a)
-		return (NULL);
-	max = LONG_MIN;
-	while(stack_a)
+void current_pos(t_stack *stack)
+{
+	int i;
+	int median;
+
+	i = 0;
+	if(!stack)
+		return;
+	median = stack_len(stack) / 2;
+	while (stack)
 	{
-		if(stack_a->value > max)
-		{
-			max = stack_a->value;
-			max_node = stack_a;
-		}
-		stack_a = stack_a->next;
+		stack->index = i;
+		if(i <= median)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
 	}
-	return (max_node);
+}
+void rotate_both( t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node)
+{
+    while (*stack_b !=cheapest_node->target_node && *stack_a != cheapest_node)
+        rr(stack_a, stack_b);
+    current_pos(*stack_a),
+    current_pos(*stack_b);
+}
+void rev_rotate_both( t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node)
+{
+    while (*stack_b !=cheapest_node->target_node && *stack_a != cheapest_node)
+        rrr(stack_a, stack_b);
+    current_pos(*stack_a),
+    current_pos(*stack_b);
 }
 
-t_stack *min(t_stack *stack_a)
+void set_target_a(t_stack *stack_a, t_stack *stack_b)
 {
-	long min;
-	t_stack *min_node;
-
-	if (!stack_a)
-		return (NULL);
-	min = LONG_MAX;
+	t_stack *current_b;
+	t_stack *target_node;
+    long best_match_i;
+    // target_node = NULL;
 	while(stack_a)
 	{
-		if(stack_a->value < min)
+		best_match_i = LONG_MIN;
+		current_b = stack_b;
+		while(current_b)
 		{
-			min = stack_a->value;
-			min_node = stack_a;
+			if(current_b->value < stack_a->value
+                && current_b->value > best_match_i)
+			{
+				best_match_i = current_b->value;
+				target_node = current_b;
+			}
+			current_b = current_b->next;
 		}
+		if(best_match_i == LONG_MIN)
+			stack_a->target_node = max(stack_b);
+		else
+			stack_a->target_node = target_node;
 		stack_a = stack_a->next;
-	}
-	return (min_node);
+	}	
 }
-   
-// void push_swap(t_stack **stack_a,  t_stack **stack_b)
-// {
-//     int len = stack_len(stack_a);
-//     int count = 0;
-//     while (count < len)
-//     {
-//         if(*stack_a != min || *stack_a != max)
-// 			{
-				
-// 			}
-// 			count++;
-//     }
-// }
+
 static void cost_analysis_a(t_stack *stack_a, t_stack *stack_b)
 {
 	int len_a;
@@ -102,13 +151,13 @@ static void cost_analysis_a(t_stack *stack_a, t_stack *stack_b)
 	len_b = stack_len(stack_b);
 	while (stack_a)
 	{
-		stack_a->push_cost = stack_a->final_i;
+		stack_a->push_cost = stack_a->index;
 		if (!(stack_a-> above_median))
-			stack_a->push_cost = len_a -(stack_a->final_i);
+			stack_a->push_cost = len_a -(stack_a->index);
 		if(stack_a->target_node->above_median)
-			stack_a->push_cost += stack_a->target_node->final_i;
+			stack_a->push_cost += stack_a->target_node->index;
 		else
-			stack_a->push_cost += len_b - (stack_a->target_node->final_i);
+			stack_a->push_cost += len_b - (stack_a->target_node->index);
 		stack_a = stack_a->next;
 	}
 }
@@ -130,69 +179,107 @@ void set_cheapest(t_stack *stack)
 		}
 		stack = stack->next;
 	}
-	cheapest_node->cheapest = 1;
-	
+    if (cheapest_node) 
+        cheapest_node->cheapest = true;
 }
-void init_a(t_stack *stack_a, t_stack *stack_b)
+
+void prep_for_push(t_stack **stack, t_stack *top_node, char *stack_name)
 {
-	current_pos(stack_a);
-	current_pos(stack_b);
-	set_targer_a(stack_a, stack_b);
-	cost_analysis_a(stack_a, stack_b);
-	set_cheapest(stack_a);
+    while (*stack != top_node)
+    {
+        if(ft_strncmp(stack_name, "stack_a", 7) == 0)
+        {
+            if (top_node->above_median)
+                ra(stack);
+            else
+                rra(stack);
+        }
+        else if (ft_strncmp(stack_name, "stack_b", 7) == 0)
+        {
+            if (top_node->above_median)
+                rb(stack);
+            else    
+                rrb(stack);
+        }
+    }
 }
-void current_pos(t_stack *stack)
+
+
+static void set_target_b(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
-	int median;
-	i = 0;
-	if(!stack)
-		return;
-	median = stack_len(stack) / 2;
-	while (stack)
-	{
-		stack->final_i = i;
-		if(i <= median)
-			stack->above_median = 1;
-		if(i <= median)
-			stack->above_median = 0;
-		stack = stack->next;
-		i++;
-	}
-}
-int set_target_a(t_stack *stack_a, t_stack *stack_b)
-{
-	t_stack *current_b;
-	t_stack *target_node;
-	long best_match_i;
-	while(stack_a)
-	{
-		best_match_i = LONG_MIN;
-		current_b = stack_b;
-		while(current_b)
-		{
-			if(current_b->value < stack_a->value && current_b->value > best_match_i)
-				{
-					best_match_i = current_b->value;
-					target_node = current_b;
-				}
-			current_b = current_b->next;
-		}
-		if(best_match_i == LONG_MIN)
-			stack_a->target_node = max(stack_b);
-		else
-			stack_a->target_node = target_node;
-		stack_a = stack_a->next;
-	}	
+    t_stack *current_a;
+    t_stack *target_node;
+    long best_match_i;
+    
+    while (stack_b)
+    {
+        best_match_i = LONG_MAX;
+        current_a = stack_a;
+        while(current_a)
+        {
+            if (current_a->value > stack_b->value
+                && current_a->value < best_match_i)
+            {
+                best_match_i = current_a->value;
+                target_node = current_a;
+            }
+            current_a = current_a->next;
+        }
+        if (best_match_i == LONG_MAX)
+            stack_b->target_node = min(stack_a);
+        else
+            stack_b->target_node = target_node;
+        stack_b = stack_b->next;
+    }
 }
 static void a_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *cheapest_node;
+
 	cheapest_node = get_cheapest(*stack_a);
 	if(cheapest_node->above_median && cheapest_node->target_node->above_median)
-		r
+		rotate_both(stack_a, stack_b, cheapest_node);
+    else if (!(cheapest_node->above_median)
+        && !(cheapest_node->target_node->above_median))
+        rev_rotate_both(stack_a, stack_b, cheapest_node);
+    prep_for_push(stack_a, cheapest_node, "stack_a");
+    prep_for_push(stack_b, cheapest_node->target_node, "stack_b");
+    pb(stack_a, stack_b);
 }
-int sort_stack(t_stack **stack_a, t_stack **stack_b)
+
+static void b_to_a(t_stack **stack_a, t_stack **stack_b)
+{
+    prep_for_push(stack_a, (*stack_b)->target_node, "stack_a");
+    pa(stack_a, stack_b);
+}
+
+static void min_on_top(t_stack **stack_a)
+{
+    while ((*stack_a)->value != min(*stack_a)->value)
+    {
+        if (min(*stack_a)->above_median)
+            ra(stack_a);
+        else
+            rra(stack_a);
+    }
+}
+
+void init_b(t_stack *stack_a, t_stack *stack_b)
+{
+    current_pos(stack_a);
+    current_pos(stack_b);
+    set_target_b(stack_a, stack_b);
+}
+
+void init_a(t_stack *stack_a, t_stack *stack_b)
+{
+	current_pos(stack_a);
+	current_pos(stack_b);
+	set_target_a(stack_a, stack_b);
+	cost_analysis_a(stack_a, stack_b);
+	set_cheapest(stack_a);
+}
+void sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	int len_stack_a;
 	len_stack_a = stack_len(*stack_a);
@@ -208,11 +295,11 @@ int sort_stack(t_stack **stack_a, t_stack **stack_b)
 	sorting_three(stack_a);
 	while (*stack_b)
 	{
-		init_a(*stack_a, *stack_b);
+		init_b(*stack_a, *stack_b);
 		b_to_a(stack_a, stack_b);
 	}
-	current_ps(*stack_a);
-	min_tp_top(stack_a)
+	current_pos(*stack_a);
+	min_on_top(stack_a);
 }
 
 

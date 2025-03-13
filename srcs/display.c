@@ -34,19 +34,8 @@ void printf_stack_b(t_stack **stack_b)
     }
     ft_printf("\n");
 }
-void display( t_stack **stack_a, t_stack **stack_b)
+void display( t_stack **stack_a)
 {
-	// ft_printf("_________________________________________\n");
-    // ft_printf("Instruction(s):\n");
-    // ft_printf("----------------------------------------\n");
-   
-    // five_hundred(stack_a, stack_b);
-    ft_printf("_________________________________________\n");
-    ft_printf("Result Stack a:\n");
-    ft_printf("----------------------------------------\n");
     printf_stack_a(stack_a);
-    ft_printf("Result Stack b:\n");
-    ft_printf("----------------------------------------\n");
-    printf_stack_a(stack_b);
 }
  
