@@ -2,7 +2,8 @@ NAME = push_swap
 LIBFT = libft.a
 PRINTF = libftprintf.a
 
-SRC = main_ps.c general_check.c sorting.c display.c movements.c free.c #parsing.c parsing_utils.c instructions.c instructions_suite.c algo.c
+SRC = main_ps.c general_check.c sorting.c display.c free.c/
+push.c rev_rotate.c rotate.c sort_strack.c sort_three.c swap.c/
 
 OBJ = $(addprefix $(PS_OBJS_DIR)/, $(SRC:.c=.o)) 
 
@@ -26,7 +27,6 @@ PRINTF_SRC_DIR= ./srcs
 
 PS_INCLUDES = -I $(PS_HEADER_DIR) -I $(LIBFT_HEADER_DIR) -I $(PRINTF_HEADER_DIR)
 PS_LIBRARIES = -L$(LIBFT_DIR) -lft  -L$(PRINTF_DIR) -lftprintf
-#SL_LIBRARIES = -L$(LIBFT_DIR) -lft -L$(PRINTF_DIR) -lftprintf -L$(MLX_DIR) -lmlx $(MATH_FLAGS)
 
 
 

@@ -27,33 +27,18 @@
 # include "../ft_printf/includes/ft_printf.h"
 
 
-// typedef struct s_stack
-// {
-//     int value;
-// 	int index;
-//     int push_cost;
-
-// 	bool above_median;
-// 	bool cheapest;
-
-// 	struct s_stack *next;
-// 	struct s_stack *target_node;
-// } t_stack;
-
-typedef struct s_stack
+typedef struct s_stack 
 {
-    int value;
-    int current_position;
-	int final_index;
-    int push_cost;
+	int					nbr; 
+	int					index; 
+	int					push_cost;
+	bool				above_median; 
+	bool				cheapest; 
+	struct s_stack	*target_node;
+	struct s_stack	*next; 
+	struct s_stack	*prev; 
+}	t_stack;
 
-	bool above_median;
-	bool cheapest;
-
-	struct s_stack *next;
-    struct s_stack *prev;
-	struct s_stack *target_node;
-} t_stack;
 // handle one argument ./push_swap "1 8 -42 1337"
 char	**ft_split(char const *s, char c);
 
@@ -63,9 +48,8 @@ void free_result(char **result);
 void free_stack(t_stack **stack_a);
 
 // handle initialisation
-int flag_ac_2(int ac);
 int check_synthax(char *av);
-int g_check(t_stack **stack_a, char **av /*, int flag_ac_2(int ac)*/);
+int g_check(t_stack **stack_a, char **av);
 int limits_check(long num);
 int is_duplicate(t_stack *stack_a, int nb);
 
@@ -75,26 +59,32 @@ void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast_ps(t_stack *lst);
 void create_stack(t_stack **stack, int nb);
 
-//the instructions
-void sa(t_stack **stack_a);
-void sb(t_stack **stack_b);
-void ss(t_stack **stack_a, t_stack **stack_b );
-void pa(t_stack **stack_a, t_stack **stack_b);
-void pb(t_stack **stack_a, t_stack **stack_b);
-void ra(t_stack **stack_a);
-void rb(t_stack **stack_b);
-void rr(t_stack **stack_a, t_stack **stack_b);
-void rra(t_stack **stack_a);
-void rrb(t_stack **stack_b);
-void rrr(t_stack **stack_a, t_stack **stack_b);
+//***Commands
+void			sa(t_stack **stack_a, bool print);
+void			sb(t_stack **stack_b, bool print);
+void			ss(t_stack **stack_a, t_stack **stack_b, bool print);
+void			ra(t_stack **stack_a, bool print);
+void			rb(t_stack **stack_b, bool print);
+void			rr(t_stack **stack_a, t_stack **stack_b, bool print);
+void			rra(t_stack **stack_a, bool print);
+void			rrb(t_stack **stack_b, bool print);
+void			rrr(t_stack **stack_a, t_stack **stack_b, bool print);
+void			pa(t_stack **stack_a, t_stack **stack_b, bool print);
+void			pb(t_stack **stack_b, t_stack **stack_a, bool print);
+
+//***Algorithm
+void			sort_three(t_stack **stack_a);
+void			sort_stacks(t_stack **stack_a, t_stack **stack_b); 
 
 //sorting
-int stack_len(t_stack *stack_a);
-int sorted(t_stack *stack);
-t_stack *max(t_stack *stack_a);
-t_stack *min(t_stack *stack_a);
-void sorting_three(t_stack **stack_a);
-void sort_stack(t_stack **stack_a, t_stack **stack_b);
+// int stack_len(t_stack *stack_a);
+// int sorted(t_stack *stack);
+t_stack *max(t_stack *stack);
+t_stack *min(t_stack *stack);
+int				stack_len(t_stack *stack); 
+t_stack	*find_last(t_stack *stack); 
+bool    sorted(t_stack *stack); 
+ 
 
 
 // display to help me visualize
