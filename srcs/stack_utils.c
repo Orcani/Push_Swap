@@ -40,8 +40,8 @@ bool	sorted(t_stack *stack)
 
 t_stack	*min(t_stack *stack) 
 {
-	long			minim;
-	t_stack	*min_node; 
+	long		minim;
+	t_stack *min_node ;  
 
 	if (!stack)
 		return (NULL);

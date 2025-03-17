@@ -82,7 +82,7 @@ void			pa(t_stack **stack_a, t_stack **stack_b, bool print);
 void			pb(t_stack **stack_b, t_stack **stack_a, bool print);
 
 //***Algorithm
-void			sort_three(t_stack **stack_a);
+void			sort_three(t_stack **stack_a /*, t_stack **stack_b*/);
 void			sort_stacks(t_stack **stack_a, t_stack **stack_b); 
 
 //sorting

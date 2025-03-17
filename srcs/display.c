@@ -6,7 +6,7 @@
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 19:57:40 by desambou          #+#    #+#             */
-/*   Updated: 2025/03/03 17:04:57 by desambou         ###   ########.fr       */
+/*   Updated: 2025/03/17 21:29:01 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,4 @@ void display( t_stack **stack_a)
 {
     printf_stack_a(stack_a);
 }
- 
+

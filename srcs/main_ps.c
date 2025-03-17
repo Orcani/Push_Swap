@@ -6,7 +6,7 @@
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:29:21 by desambou          #+#    #+#             */
-/*   Updated: 2025/03/06 12:43:06 by desambou         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:47:38 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int main (int ac, char *av[])
             sort_stacks(&stack_a, &stack_b);
     }
     display(&stack_a); //-> to delete later
+    display(&stack_b);
     if (ac == 2)
         free_result(av);
     free_stack(&stack_a);
