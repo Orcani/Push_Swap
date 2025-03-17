@@ -53,6 +53,15 @@ int g_check(t_stack **stack_a, char **av);
 int limits_check(long num);
 int is_duplicate(t_stack *stack_a, int nb);
 
+
+//***Nodes initiation
+void			init_nodes_a(t_stack *stack_a, t_stack *stack_b); 
+void			init_nodes_b(t_stack *stack_a, t_stack *stack_b); 
+void			current_index(t_stack *stack); 
+void			set_cheapest(t_stack *stack); 
+t_stack	*get_cheapest(t_stack *stack); 
+void			prep_for_push(t_stack **s, t_stack *n, char c);
+
 //handle creating stack
 t_stack *create_cell_ps(long num);
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
