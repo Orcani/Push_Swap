@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 
-int flag_ac_2(int ac)
-{
-	if (ac == 2)
-		return(1);
-	return (0);
-}
-
 int check_synthax(char *av)
 {
     int i_c;
@@ -50,40 +43,43 @@ int is_duplicate(t_stack *stack_a, int nb)
 		return (0);
     while (stack_a)
     {
-        if (stack_a->value == nb)
+        if (stack_a->nbr == nb)
             return (1);
         stack_a = stack_a->next;
     }
     return(0);
 }
 
-// stop the program when an error comes
-
 
 // create_stack
 void create_stack(t_stack **stack, int nb)
 {
-	t_stack *top;
+	t_stack *new_node;
 	t_stack *bottom;
 	
 	if (!stack)
 		return;
-	top = malloc(sizeof(t_stack));
-	if (!top)
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
 		return;
-	top->value = nb;
-    top->index= 0;
-    top->target_node = NULL;	
-	top->next = NULL;
+	new_node->nbr = nb;
+	new_node->index = 0;
+	new_node->target_node = NULL;
+	new_node->push_cost = 0;
+	new_node->above_median = false;
+	new_node->cheapest = false;
+	new_node->next = NULL;
+	new_node->prev = NULL;
 	
 	if (!*stack)
 	{
-		*stack = top;
+		*stack = new_node;
 	}
 	else
 	{
 		bottom = ft_lstlast_ps(*stack);
-		bottom->next = top;
+		bottom->next = new_node;
+        new_node->prev = bottom;
 	}
 }
 
@@ -91,7 +87,7 @@ t_stack	*ft_lstlast_ps(t_stack *lst)
 {
 	if (lst == NULL)
 		return (NULL);
-	while (lst->next != NULL)
+	while (lst->next /*!= NULL*/)
 		lst = lst->next;
 	return (lst);
 }
@@ -101,7 +97,7 @@ void printflist(t_stack *list) //-> to delete later
     temp = list;
     while (temp)
     {
-        ft_printf("%d ", (int)temp->value);
+        ft_printf("%d ", (int)temp->nbr);
         temp = temp->next;
     }
     ft_printf("\n");

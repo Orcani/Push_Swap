@@ -18,7 +18,7 @@ void printf_stack_a(t_stack **stack_a)
     temp = *stack_a;
     while (temp)
     {
-        ft_printf("%d ", temp->value);
+        ft_printf("%d ", temp->nbr);
         temp = temp->next;
     }
     ft_printf("\n");
@@ -29,7 +29,7 @@ void printf_stack_b(t_stack **stack_b)
     temp = *stack_b;
     while (temp)
     {
-        ft_printf("%d ", temp->value);
+        ft_printf("%d ", temp->nbr);
         temp = temp->next;
     }
     ft_printf("\n");

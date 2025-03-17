@@ -4,7 +4,7 @@ void	sort_three(t_stack **stack_a)
 {
 	t_stack	*biggest_node; 
 
-	biggest_node = find_max(*stack_a);
+	biggest_node = max(*stack_a);
 	if (biggest_node == *stack_a)
 		ra(stack_a, false); 
 	else if ((*stack_a)->next == biggest_node) 

@@ -44,7 +44,7 @@ void printflist(t_stack *list)
     temp = list;
     while (temp)
     {
-        ft_printf("%d ", (int)temp->value);
+        ft_printf("%d ", (int)temp->nbr);
         temp = temp->next;
     }
     ft_printf("\n");
@@ -76,7 +76,7 @@ t_stack *create_cell_ps(long nb)
     cell = malloc(sizeof(t_stack)); //malloc donc free autre part;
     if (!cell)
         return(NULL);
-    cell->num = nb;
+    cell->nbr = nb;
     cell->next = NULL;
     return (cell);
 }

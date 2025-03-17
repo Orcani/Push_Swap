@@ -2,8 +2,7 @@ NAME = push_swap
 LIBFT = libft.a
 PRINTF = libftprintf.a
 
-SRC = main_ps.c general_check.c sorting.c display.c free.c/
-push.c rev_rotate.c rotate.c sort_strack.c sort_three.c swap.c/
+SRC = main_ps.c general_check.c display.c free.c push.c rev_rotate.c rotate.c sort_stacks.c sort_three.c swap.c init_a_to_b.c init_b_to_a.c stack_init.c stack_utils.c 
 
 OBJ = $(addprefix $(PS_OBJS_DIR)/, $(SRC:.c=.o)) 
 

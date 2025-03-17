@@ -22,7 +22,7 @@ static void	set_target_b(t_stack *stack_a, t_stack *stack_b)
 			current_a = current_a->next; 
 		}
 		if (best_match_index == LONG_MAX) 
-			stack_b->target_node = find_min(stack_a); 
+			stack_b->target_node = min(stack_a); 
 		else
 			stack_b->target_node = target_node; 
 		stack_b = stack_b->next; 

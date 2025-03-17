@@ -13,20 +13,20 @@
 #include "push_swap.h"
 
 
-int stack_len(t_stack *stack_a)
-{
-    int i;
-    t_stack *temp;
+// int stack_len(t_stack *stack_a)
+// {
+//     int i;
+//     t_stack *temp;
 
-    i = 0;
-    temp = stack_a; 
-    while (temp)
-    {
-        temp = temp->next;  
-        i++; 
-    }
-    return (i);
-}
+//     i = 0;
+//     temp = stack_a; 
+//     while (temp)
+//     {
+//         temp = temp->next;  
+//         i++; 
+//     }
+//     return (i);
+// }
 
 int main (int ac, char *av[])
 {
@@ -55,11 +55,11 @@ int main (int ac, char *av[])
     { 
      ft_printf("not sorted\n");   //-> to delete later
         if (stack_len(stack_a) == 2)
-            sa(&stack_a/*, false*/);
+            sa(&stack_a, false);
         else if (stack_len(stack_a) == 3)
-            sorting_three(&stack_a);
+            sort_three(&stack_a);
         else if (stack_len(stack_a) > 3)
-            sort_stack(&stack_a, &stack_b);
+            sort_stacks(&stack_a, &stack_b);
     }
     display(&stack_a); //-> to delete later
     if (ac == 2)

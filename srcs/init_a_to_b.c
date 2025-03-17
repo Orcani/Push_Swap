@@ -53,7 +53,7 @@ static void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 			current_b = current_b->next;
 		}
 		if (best_match_index == LONG_MIN) 
-			stack_a->target_node = find_max(stack_b);
+			stack_a->target_node = max(stack_b);
 		else
 			stack_a->target_node = target_node; 
 		stack_a = stack_a->next; 
