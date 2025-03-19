@@ -6,7 +6,7 @@
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:46:20 by desambou          #+#    #+#             */
-/*   Updated: 2025/03/06 12:41:17 by desambou         ###   ########.fr       */
+/*   Updated: 2025/03/19 19:11:39 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ void create_stack(t_stack **stack, t_stack *new_node)
 }
 
 
-t_stack	*ft_lstlast_ps(t_stack *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
+// t_stack	*ft_lstlast_ps(t_stack *lst)
+// {
+// 	if (lst == NULL)
+// 		return (NULL);
+// 	while (lst->next)
+// 		lst = lst->next;
+// 	return (lst);
+// }
 
 void printflist(t_stack *list) //-> to delete later
 {
@@ -124,8 +124,8 @@ int g_check(t_stack **stack_a, char **av)
 		create_stack(stack_a, new_node);
 		i++;
 	}
-	ft_printf("Input:\n");//-> to delete later
-	printflist(*stack_a); //-> to delete later
+	// ft_printf("Input:\n");//-> to delete later
+	// printflist(*stack_a); //-> to delete later
     return (0);
 }
 

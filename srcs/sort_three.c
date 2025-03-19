@@ -9,8 +9,8 @@ void	sort_three(t_stack **stack_a /*, t_stack **stack_b*/)
 		ra(stack_a, false); 
 	else if ((*stack_a)->next == biggest_node) 
 		rra(stack_a, false); 
-	ft_printf("nbr %d\n",(*stack_a)->nbr );
-	ft_printf("nbr next %d\n", (*stack_a)->next->nbr ); // -> seg
+	// ft_printf("nbr %d\n",(*stack_a)->nbr );
+	// ft_printf("nbr next %d\n", (*stack_a)->next->nbr ); // -> seg
 	if ((*stack_a)->nbr > (*stack_a)->next->nbr) 
 		sa(stack_a, false); 
 	
