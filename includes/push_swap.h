@@ -59,14 +59,14 @@ void			init_nodes_a(t_stack *stack_a, t_stack *stack_b);
 void			init_nodes_b(t_stack *stack_a, t_stack *stack_b); 
 void			current_index(t_stack *stack); 
 void			set_cheapest(t_stack *stack); 
-t_stack	*get_cheapest(t_stack *stack); 
+t_stack         *get_cheapest(t_stack *stack); 
 void			prep_for_push(t_stack **s, t_stack *n, char *c);
 
 //handle creating stack
-t_stack *create_cell_ps(long num);
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast_ps(t_stack *lst);
-void create_stack(t_stack **stack, int nb);
+t_stack *new_node_ps(int nb);
+void create_stack(t_stack **stack, t_stack *new_node);
 
 //***Commands
 void			sa(t_stack **stack_a, bool print);
@@ -101,5 +101,6 @@ void printf_stack_a(t_stack **stack_a);
 void printf_stack_b(t_stack **stack_b);
 void printflist(t_stack *list);
 void display( t_stack **stack_a);
+void tmp_display(t_stack **stack_a, t_stack **stack_b);
 
 #endif

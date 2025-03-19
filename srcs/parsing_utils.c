@@ -68,12 +68,12 @@ int is_duplicate(t_stack *head)
     }
     return(0);
 }
-// leaks here
+
 t_stack *create_cell_ps(long nb)
 {
     t_stack *cell;
 
-    cell = malloc(sizeof(t_stack)); //malloc donc free autre part;
+    cell = malloc(sizeof(t_stack));
     if (!cell)
         return(NULL);
     cell->nbr = nb;

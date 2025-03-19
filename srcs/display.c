@@ -34,8 +34,15 @@ void printf_stack_b(t_stack **stack_b)
     }
     ft_printf("\n");
 }
-void display( t_stack **stack_a)
+void display(t_stack **stack_a)
 {
     printf_stack_a(stack_a);
 }
 
+void tmp_display(t_stack **stack_a, t_stack **stack_b)
+{
+    printf("\nstack a\n");
+    printf_stack_a(stack_a);
+    printf("\nstack b\n");
+    printf_stack_b(stack_b);
+}
