@@ -13,14 +13,14 @@
 #include "push_swap.h"
 
 
-t_stack	*ft_lstlast_ps(t_stack *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
+// t_stack	*ft_lstlast_ps(t_stack *lst)
+// {
+// 	if (lst == NULL)
+// 		return (NULL);
+// 	while (lst->next != NULL)
+// 		lst = lst->next;
+// 	return (lst);
+// }
 
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new)
 {

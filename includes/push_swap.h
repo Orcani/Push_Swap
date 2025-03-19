@@ -64,7 +64,7 @@ void			prep_for_push(t_stack **s, t_stack *n, char *c);
 
 //handle creating stack
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
-t_stack	*ft_lstlast_ps(t_stack *lst);
+
 t_stack *new_node_ps(int nb);
 void create_stack(t_stack **stack, t_stack *new_node);
 t_stack	*ft_lstlast_ps(t_stack *lst);

@@ -18,6 +18,8 @@ void free_stack(t_stack **stack_a)
     t_stack *current;
     t_stack *next;
 
+    if (!stack_a) //Check for an empty stack
+		return ;
     current = *stack_a;
     while (current)
     {

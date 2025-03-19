@@ -33,3 +33,12 @@ void	prep_for_push(t_stack **stack, t_stack *top_node, char *stack_name)
 		}	
 	}
 }
+
+// void	init_nodes(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	current_position(stack_a);
+// 	current_position(stack_b);
+// 	set_target_node(stack_a, stack_b);
+// 	set_price(stack_a, stack_b);
+// 	set_cheapest(stack_b);
+// }

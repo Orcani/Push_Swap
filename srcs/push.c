@@ -35,7 +35,6 @@ void	pa(t_stack **stack_a, t_stack **stack_b, bool print)
 	push(stack_a, stack_b); 
 	if (!print) 
 		ft_printf("pa\n"); 
-    tmp_display(stack_a, stack_b);
 }
 
 void	pb(t_stack **stack_b, t_stack **stack_a, bool print) 
@@ -43,5 +42,4 @@ void	pb(t_stack **stack_b, t_stack **stack_a, bool print)
 	push(stack_b, stack_a);
 	if (!print)
 		ft_printf("pb\n"); //-> to modify and remove %d
-    tmp_display(stack_a, stack_b);
 }

@@ -81,28 +81,27 @@ void create_stack(t_stack **stack, t_stack *new_node)
         new_node->prev = bottom;
 	}
 }
-
-
-// t_stack	*ft_lstlast_ps(t_stack *lst)
-// {
-// 	if (lst == NULL)
-// 		return (NULL);
-// 	while (lst->next)
-// 		lst = lst->next;
-// 	return (lst);
-// }
-
-void printflist(t_stack *list) //-> to delete later
+t_stack	*ft_lstlast_ps(t_stack *lst)
 {
-    t_stack *temp;
-    temp = list;
-    while (temp)
-    {
-        ft_printf("%d ", (int)temp->nbr);
-        temp = temp->next;
-    }
-    ft_printf("\n");
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
+
+
+// void printflist(t_stack *list) //-> to delete later
+// {
+//     t_stack *temp;
+//     temp = list;
+//     while (temp)
+//     {
+//         ft_printf("%d ", (int)temp->nbr);
+//         temp = temp->next;
+//     }
+//     ft_printf("\n");
+// }
 // general function to check all the criterias for multiple av (after the split)
 int g_check(t_stack **stack_a, char **av)
 {
@@ -124,8 +123,6 @@ int g_check(t_stack **stack_a, char **av)
 		create_stack(stack_a, new_node);
 		i++;
 	}
-	// ft_printf("Input:\n");//-> to delete later
-	// printflist(*stack_a); //-> to delete later
     return (0);
 }
 

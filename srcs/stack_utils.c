@@ -11,7 +11,7 @@ int	stack_len(t_stack *stack)
 	while (stack)
 	{
 		stack = stack->next;
-		count++;
+        count++;
 	}
 	return (count);
 }

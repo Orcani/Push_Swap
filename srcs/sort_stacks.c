@@ -41,9 +41,9 @@ static void	min_on_top(t_stack **stack_a)
     while ((*stack_a)->nbr != min(*stack_a)->nbr) 
     {
         if (min(*stack_a)->above_median) 
-        ra(stack_a, false);
+            ra(stack_a, false);
         else
-        rra(stack_a, false);
+            rra(stack_a, false);
     }
 }
 
