@@ -12,13 +12,3 @@ void	sort_three(t_stack **stack_a)
 	if ((*stack_a)->nbr > (*stack_a)->next->nbr) 
 		sa(stack_a, false); 
 }
-
-// void	sort_five(t_stack **stack_a, t_stack **stack_b)
-// {
-// 	while (stack_len(*stack_a) > 3)
-// 	{
-// 		init_nodes(*stack_a, *stack_b);
-// 		finish_rotation(stack_a, min(*stack_a), 'a');
-// 		pb(stack_b, stack_a, false);
-// 	}
-// }

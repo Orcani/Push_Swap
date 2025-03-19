@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 int	stack_len(t_stack *stack) 
 {
 	int	count; 
@@ -11,7 +10,7 @@ int	stack_len(t_stack *stack)
 	while (stack)
 	{
 		stack = stack->next;
-        count++;
+		count++;
 	}
 	return (count);
 }
@@ -41,7 +40,7 @@ bool	sorted(t_stack *stack)
 t_stack	*min(t_stack *stack) 
 {
 	long		minim;
-	t_stack *min_node ;  
+	t_stack		*min_node ;  
 
 	if (!stack)
 		return (NULL);
@@ -60,7 +59,7 @@ t_stack	*min(t_stack *stack)
 
 t_stack	*max(t_stack *stack) 
 {
-	long			maxi;
+	long	maxi;
 	t_stack	*max_node;
 
 	if (!stack)

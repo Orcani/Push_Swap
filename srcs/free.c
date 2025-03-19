@@ -12,48 +12,47 @@
 
 #include "push_swap.h"
 
-
-void free_stack(t_stack **stack_a)
+void	free_stack(t_stack **stack_a)
 {
-    t_stack *current;
-    t_stack *next;
+	t_stack	*current;
+	t_stack	*next;
 
-    if (!stack_a) //Check for an empty stack
+	if (!stack_a) //Check for an empty stack
 		return ;
-    current = *stack_a;
-    while (current)
-    {
-        next = current->next; 
-        free(current); 
-        current = next;  
-    }
-    *stack_a = NULL; 
+	current = *stack_a;
+	while (current)
+	{
+		next = current->next; 
+		free(current); 
+		current = next;  
+	}
+	*stack_a = NULL; 
 }
 
-void free_result(char **result)
+void	free_result(char **result)
 {
-    int i = 0;
+    int	i;
 
-    while (result[i])  
-    {
-        free(result[i]); 
-        i++;
-    }
-    free(result);  
-    
+	i = 0;
+	while (result[i])
+	{
+		free(result[i]); 
+		i++;
+	}
+	free(result);  
 }
 
-void error_check(t_stack *stack_a)
+void	error_check(t_stack *stack_a)
 {
-	t_stack *current;
-	t_stack *tmp;
-	
+	t_stack	*current;
+	t_stack	*tmp;
+
 	current = stack_a;
     while (current)
-    {
-        tmp = current;
-        current = current->next;
-        free(tmp);
-    }
+	{
+		tmp = current;
+		current = current->next;
+		free(tmp);
+	}
 	ft_putstr_fd("Error\n", 2);
 }
