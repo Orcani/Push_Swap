@@ -6,7 +6,7 @@
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 14:37:48 by desambou          #+#    #+#             */
-/*   Updated: 2025/02/20 13:40:35 by desambou         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:54:55 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,72 +95,27 @@ char	*extract_line(char **stash)
 	return (line);
 }
 
-
 char	*get_next_line(int fd)
 {
 	static char	*stash = NULL;
 	char		*line;
 	char		*buffer;
-	char		*newline_pos;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-
-	// Read and combine until we find a newline or reach the end of file
 	while (!stash || !ft_strchr(stash, '\n'))
 	{
 		buffer = read_buffer(fd, &stash);
-		if (!buffer)  // If no more data is available, exit the loop
+		if (!buffer)
 		{
 			if (stash && *stash)
-				break ;  // If there's leftover data, break out of the loop
+				break ;
 			free(stash);
 			stash = NULL;
-			return (NULL);  // Return NULL if nothing is left to read
+			return (NULL);
 		}
 		stash = combine_stash(&stash, buffer);
 	}
-
-	// Process the line and replace every '\n' with '\0'
 	line = extract_line(&stash);
-	if (!line)
-		return (NULL);
-
-	// Find every newline ('\n') and replace with null terminator ('\0')
-	newline_pos = ft_strchr(line, '\n');
-	if (newline_pos)
-		*newline_pos = '\0';  // Replace the first newline with '\0'
-
-	// Return the processed line
 	return (line);
 }
-
-
-
-
-
-
-// #include <stdio.h>
-
-// int main(void)
-// {
-//     int fd;
-//     char *line;
-
-//     fd = open("test.txt", O_RDONLY);
-//     if (fd == -1)
-//     {
-//         printf("Error opening file\n");
-//         return (1);
-//     }
-
-//     while ((line = get_next_line(fd)) != NULL)
-//     {
-//         printf("%s", line);
-//         free(line);
-//         sleep(1);  // Sleep for 1 second between each line
-//     }
-
-//     close(fd);
-//     return (0);
-// }

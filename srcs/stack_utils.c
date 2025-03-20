@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 12:19:50 by desambou          #+#    #+#             */
+/*   Updated: 2025/03/20 12:56:54 by desambou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	stack_len(t_stack *stack) 
+int	stack_len(t_stack *stack)
 {
-	int	count; 
+	int	count;
 
-	if (!stack) 
+	if (!stack)
 		return (0);
 	count = 0;
 	while (stack)
@@ -15,11 +27,11 @@ int	stack_len(t_stack *stack)
 	return (count);
 }
 
-t_stack	*find_last(t_stack *stack) 
+t_stack	*find_last(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
-	while (stack->next) 
+	while (stack->next)
 		stack = stack->next;
 	return (stack);
 }
@@ -28,49 +40,49 @@ bool	sorted(t_stack *stack)
 {
 	if (!stack)
 		return (1);
-	while (stack->next) 
+	while (stack->next)
 	{
-		if (stack->nbr > stack->next->nbr) 
+		if (stack->nbr > stack->next->nbr)
 			return (false);
-		stack = stack->next; 
+		stack = stack->next;
 	}
 	return (true);
 }
 
-t_stack	*min(t_stack *stack) 
+t_stack	*min(t_stack *stack)
 {
 	long		minim;
-	t_stack		*min_node ;  
+	t_stack		*min_node ;
 
 	if (!stack)
 		return (NULL);
-	minim = LONG_MAX; 
+	minim = LONG_MAX;
 	while (stack)
 	{
-		if (stack->nbr < minim) 
+		if (stack->nbr < minim)
 		{
 			minim = stack->nbr;
-			min_node = stack; 
+			min_node = stack;
 		}
 		stack = stack->next;
 	}
-	return (min_node); 
+	return (min_node);
 }
 
-t_stack	*max(t_stack *stack) 
+t_stack	*max(t_stack *stack)
 {
 	long	maxi;
 	t_stack	*max_node;
 
 	if (!stack)
 		return (NULL);
-	maxi = LONG_MIN; 
+	maxi = LONG_MIN;
 	while (stack)
 	{
 		if (stack->nbr > maxi)
 		{
 			maxi = stack->nbr;
-			max_node = stack; 
+			max_node = stack;
 		}
 		stack = stack->next;
 	}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   init_a_to_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 19:22:22 by desambou          #+#    #+#             */
-/*   Updated: 2025/03/06 21:59:00 by desambou         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:53:18 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	current_index(t_stack *stack)
 {
-	int	i; 
+	int	i;
 	int	median;
 
 	i = 0;
@@ -33,7 +33,7 @@ void	current_index(t_stack *stack)
 	}
 }
 
-static  void	set_target_a(t_stack *stack_a, t_stack *stack_b)
+static void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack		*current_b;
 	t_stack		*target_node;
@@ -45,7 +45,8 @@ static  void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 		current_b = stack_b;
 		while (current_b)
 		{
-			if (current_b->nbr < stack_a->nbr && current_b->nbr > best_match_index)
+			if (current_b->nbr < stack_a->nbr
+				&& current_b->nbr > best_match_index)
 			{
 				best_match_index = current_b->nbr;
 				target_node = current_b;
@@ -86,7 +87,7 @@ void	set_cheapest(t_stack *stack)
 	t_stack	*cheapest_node;
 
 	if (!stack)
-		return;
+		return ;
 	cheapest_value = LONG_MAX;
 	while (stack)
 	{
@@ -100,7 +101,7 @@ void	set_cheapest(t_stack *stack)
 	cheapest_node->cheapest = true;
 }
 
-void	init_nodes_a(t_stack *stack_a, t_stack *stack_b) 
+void	init_nodes_a(t_stack *stack_a, t_stack *stack_b)
 {
 	current_index(stack_a);
 	current_index(stack_b);

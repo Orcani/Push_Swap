@@ -6,7 +6,7 @@
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:18:06 by desambou          #+#    #+#             */
-/*   Updated: 2025/03/06 11:51:25 by desambou         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:52:21 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	**ft_split(char const *s, char c)
 	int		start;
 	char	**result;
 	int		substr_count;
-	
+
 	i = 0;
 	start = 0;
 	if (!s)
@@ -89,101 +89,3 @@ char	**ft_split(char const *s, char c)
 	result[i] = NULL;
 	return (result);
 }
-
-// int main()
-// {
-//     char *str = "Hello,World,This,Is,A,Test";
-//     char delimiter = ',';
-//     char **result;
-//     int count = 0;
-
-//     result = ft_split(str, delimiter);
-
-//     if (result == NULL)
-//     {
-//         printf("ft_split returned NULL\n");
-//         return 1;
-//     }
-
-//     printf("Original string: \"%s\"\n", str);
-//     printf("Delimiter: '%c'\n", delimiter);
-//     printf("Split result:\n");
-
-//     // Count the number of substrings and print them
-//     while (result[count] != NULL)
-//     {
-//         printf("[%d]: \"%s\"\n", count, result[count]);
-//         count++;
-//     }
-
-//     // Free the allocated memory
-//     free_result(result, count);
-
-//     return 0;
-// }
-// // int main(void)
-// // {
-// //      char **result;
-
-// //     printf("Test 1: Basic splitting\n");
-// //     result = ft_split("hello world how are you", ' ');
-// //     print_split_result(result);
-// //     free_split_result(result);
-
-// //     printf("Test 2: Multiple consecutive delimiters\n");
-// //     result = ft_split("  hello   world  ", ' ');
-// //     print_split_result(result);
-// //     free_split_result(result);
-
-// //     printf("Test 3: No delimiters\n");
-// //     result = ft_split("hello", ' ');
-// //     // print_split_result(result);
-// //     // free_split_result(result);
-
-// //     printf("Test 4: Empty string\n");
-// //     result = ft_split("", ' ');
-// //     // print_split_result(result);
-// //     // free_split_result(result);
-
-// //     printf("Test 5: String with only delimiters\n");
-// //     result = ft_split("     ", ' ');
-// //     // print_split_result(result);
-// //     // free_split_result(result);
-
-// //     printf("Test 6: NULL input\n");
-// //     result = ft_split(NULL, ' ');
-// //     // print_split_result(result);
-// //     // free_split_result(result);
-
-// //     return (0);
-// // }
-// // Count how; many substrings we'll have
-// // Allocate memory for the array of substrings
-// // For each substring:
-// //   - Find the next delimiter
-// //   - Extract the substring
-// //   - Add it to the array
-// // Add a NULL pointer at the end of the array
-// // Return the array
-// // Purpose: To break a string into 
-// //smaller parts (substrings) at specified points.
-
-// // Input:
-// // A string to be split
-// // A delimiter (character or string) that marks where to split
-// // Output: An array of substrings
-
-// // Process:
-// // The function searches for the delimiter in the string
-// // It cuts the string at each occurrence of the delimiter
-// // It stores each resulting substring in an array
-
-// // Example:
-// // If we split "apple,banana,cherry" using "," as the delimiter, we get:
-// // ["apple", "banana", "cherry"]
-
-// // ft_strlen: To calculate string lengths
-// // ft_substr: To extract substrings
-// // ft_strchr: To find the delimiter in the string
-
-// // malloc: To allocate memory for the array of substrings

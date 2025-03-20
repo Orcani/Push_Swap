@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 12:19:19 by desambou          #+#    #+#             */
+/*   Updated: 2025/03/20 13:32:29 by desambou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	push(t_stack **dst, t_stack **src) 
+static void	push(t_stack **dst, t_stack **src)
 {
 	t_stack	*push_node;
 
 	if (!src || !*src)
-		return;
+		return ;
 	push_node = *src;
 	*src = (*src)->next;
 	if (*src)
 		(*src)->prev = NULL;
-
-	push_node->prev = NULL; 
+	push_node->prev = NULL;
 	if (!*dst)
 	{
 		*dst = push_node;

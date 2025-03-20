@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                    :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 11:03:35 by desambou          #+#    #+#             */
-/*   Updated: 2024/12/15 12:59:28 by desambou         ###   ########.fr       */
+/*   Created: 2025/03/20 12:18:09 by desambou          #+#    #+#             */
+/*   Updated: 2025/03/20 13:44:57 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,16 @@
 # include "../Libft/includes/libft.h"
 # include "../ft_printf/includes/ft_printf.h"
 
-
-typedef struct s_stack 
+typedef struct s_stack
 {
-	int				nbr; 
-	int				index; 
+	int				nbr;
+	int				index;
 	int				push_cost;
-	bool			above_median; 
-	bool			cheapest; 
+	bool			above_median;
+	bool			cheapest;
 	struct s_stack	*target_node;
-	struct s_stack	*next; 
-	struct s_stack	*prev; 
+	struct s_stack	*next;
+	struct s_stack	*prev;
 }	t_stack;
 
 // handle one argument ./push_swap "1 8 -42 1337"
@@ -57,8 +56,11 @@ void			init_nodes_a(t_stack *stack_a, t_stack *stack_b);
 void			init_nodes_b(t_stack *stack_a, t_stack *stack_b);
 void			current_index(t_stack *stack);
 void			set_cheapest(t_stack *stack);
-t_stack 		*get_cheapest(t_stack *stack);
+t_stack			*get_cheapest(t_stack *stack);
 void			prep_for_push(t_stack **s, t_stack *n, char *c);
+void			min_on_top(t_stack **stack_a);
+void			move_a_to_b(t_stack **stack_a, t_stack **stack_b);
+void			move_b_to_a(t_stack **stack_a, t_stack **stack_b);
 
 //handle creating stack
 t_stack			*new_node_ps(int nb);

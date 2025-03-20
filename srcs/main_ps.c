@@ -6,13 +6,26 @@
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:29:21 by desambou          #+#    #+#             */
-/*   Updated: 2025/03/19 19:12:11 by desambou         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:29:03 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main (int ac, char *av[])
+void	all_options(t_stack **stack_a, t_stack **stack_b)
+{
+	if (!sorted(*stack_a))
+	{
+		if (stack_len(*stack_a) == 2)
+			sa(stack_a, false);
+		else if (stack_len(*stack_a) == 3)
+			sort_three(stack_a);
+		else if (stack_len(*stack_a) > 3)
+			sort_stacks(stack_a, stack_b);
+	}
+}
+
+int	main(int ac, char *av[])
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -27,23 +40,13 @@ int	main (int ac, char *av[])
 		if (g_check(&stack_a, av))
 		{
 			free_result(av);
-			return(0);
+			return (0);
 		}
 	}
 	else
-	{
 		if (g_check(&stack_a, av + 1))
 			return (0);
-	}
-	if (!sorted(stack_a))
-	{
-		if (stack_len(stack_a) == 2)
-			sa(&stack_a, false);
-		else if (stack_len(stack_a) == 3)
-			sort_three(&stack_a);
-		else if (stack_len(stack_a) > 3)
-			sort_stacks(&stack_a, &stack_b);
-	}
+	all_options(&stack_a, &stack_b);
 	if (ac == 2)
 		free_result(av);
 	free_stack(&stack_a);

@@ -6,7 +6,7 @@
 /*   By: desambou <desambou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:41:10 by desambou          #+#    #+#             */
-/*   Updated: 2024/11/20 12:11:30 by desambou         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:51:14 by desambou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(n + '0', fd);
 }
 
-int main() {
-	int fd = 1; // File descriptor for standard output (the terminal)
+// int main() {
+// 	int fd = 1; // File descriptor for standard output (the terminal)
 
-	printf("Testing ft_putnbr_fd:\n");
+// 	printf("Testing ft_putnbr_fd:\n");
 
-	// Test with positive numbers
-	printf("Positive number: ");
-	ft_putnbr_fd(12345, fd); // Should print: 12345
-	printf("\n");
+// 	// Test with positive numbers
+// 	printf("Positive number: ");
+// 	ft_putnbr_fd(12345, fd); // Should print: 12345
+// 	printf("\n");
 
-	// Test with negative numbers
-	printf("Negative number: ");
-	ft_putnbr_fd(-6789, fd); // Should print: -6789
-	printf("\n");
+// 	// Test with negative numbers
+// 	printf("Negative number: ");
+// 	ft_putnbr_fd(-6789, fd); // Should print: -6789
+// 	printf("\n");
 
-	// Test with zero
-	printf("Zero: ");
-	ft_putnbr_fd(0, fd); // Should print: 0
-	printf("\n");
+// 	// Test with zero
+// 	printf("Zero: ");
+// 	ft_putnbr_fd(0, fd); // Should print: 0
+// 	printf("\n");
 
-	return (0);
-}
+// 	return (0);
+// }
